@@ -1,95 +1,102 @@
 'use client';
+import Link from "next/link";
+import { FaFacebook, FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   const footerNavs = [
     {
-      label: "Resources",
+      label: "Quick Links",
       items: [
-        { href: "#", name: "Contact" },
-        { href: "#", name: "Support" },
-        { href: "#", name: "Documentation" },
-        { href: "#", name: "Pricing" },
-      ],
-    },
-    {
-      label: "About",
-      items: [
-        { href: "#", name: "Terms" },
-        { href: "#", name: "License" },
-        { href: "#", name: "Privacy" },
-        { href: "#", name: "About Us" },
-      ],
-    },
-    {
-      label: "Explore",
-      items: [
-        { href: "#", name: "Showcase" },
-        { href: "#", name: "Roadmap" },
-        { href: "#", name: "Languages" },
-        { href: "#", name: "Blog" },
+        { href: "#", name: "Home" },
+        { href: "#", name: "News" },
+        { href: "#", name: "Viral Stories" },
+        { href: "#", name: "Match Score" },
       ],
     },
     {
       label: "Company",
       items: [
-        { href: "#", name: "Partners" },
-        { href: "#", name: "Team" },
+        { href: "#", name: "About Us" },
         { href: "#", name: "Careers" },
+        { href: "#", name: "Contact" },
+        { href: "#", name: "Privacy Policy" },
+      ],
+    },
+    {
+      label: "Resources",
+      items: [
+        { href: "#", name: "Terms of Service" },
+        { href: "#", name: "FAQs" },
+        { href: "#", name: "Support" },
+        { href: "#", name: "Advertising" },
       ],
     },
   ];
 
   return (
-    <footer className="pt-10 bg-gray-800">
-      <div className="max-w-screen-xl mx-auto px-4 md:px-8">
-        <div className="justify-between items-center gap-12 md:flex">
-          <div className="flex-1 max-w-lg">
-            <h3 className="text-white text-2xl font-bold">
-              Get our beautiful newsletter straight to your inbox.
+    <footer className="bg-gray-900 text-gray-300 py-5">
+      <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
+        {/* Newsletter Section */}
+        <div className="md:flex md:items-center md:justify-between border-b border-gray-700 pb-10">
+          <div className="max-w-lg">
+            <h3 className="text-white text-2xl font-sans">
+              Stay Updated with Top5Shots
             </h3>
+            <p className="text-gray-400 mt-2 text-sm">
+              Subscribe to our newsletter for the latest trending stories and updates.
+            </p>
           </div>
-          <div className="flex-1 mt-6 md:mt-0">
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="flex items-center gap-x-3 md:justify-end"
-            >
-              <div className="relative">
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter your email"
-                  className="w-full pl-4 pr-3 py-2 text-gray-500 bg-white outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
-                />
-              </div>
-              <button className="block w-auto py-3 px-4 font-medium text-sm text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg shadow">
-                Subscribe
-              </button>
-            </form>
-          </div>
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="mt-6 md:mt-0 flex items-center gap-3"
+          >
+            <input
+              type="email"
+              required
+              placeholder="Enter your email"
+              className="w-full md:w-80 px-4 py-2 text-gray-900 bg-white outline-none border border-gray-300 focus:border-purple-500 shadow-sm rounded-lg"
+            />
+            <button className="bg-purple-600 text-white px-5 py-2 text-sm font-medium rounded-lg shadow-md hover:bg-purple-500 transition">
+              Subscribe
+            </button>
+          </form>
         </div>
+        
 
-        <div className="flex-1 mt-16 space-y-6 justify-between sm:flex md:space-y-0">
-          {footerNavs.map((item, idx) => (
-            <ul className="space-y-4 text-gray-300" key={idx}>
-              <h4 className="text-gray-200 font-semibold sm:pb-2">{item.label}</h4>
-              {item.items.map((el, index) => (
-                <li key={index}>
-                  <a href={el.href} className="duration-150 hover:text-gray-400">
-                    {el.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+        {/* Navigation Links */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-12">
+          {footerNavs.map((nav, idx) => (
+            <div key={idx}>
+              <h4 className="text-white font-semibold mb-3">{nav.label}</h4>
+              <ul className="space-y-2">
+                {nav.items.map((item, index) => (
+                  <li key={index}>
+                    <a href={item.href} className="hover:text-gray-400 transition">
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
 
-        <div className="mt-10 py-10 border-t border-gray-700 items-center justify-between sm:flex">
-          <p className="text-gray-300">© 2025 Your Company. All rights reserved.</p>
-          <div className="flex items-center gap-x-6 text-gray-400 mt-6">
-            <a href="#" className="hover:text-gray-500">Facebook</a>
-            <a href="#" className="hover:text-gray-500">Twitter</a>
-            <a href="#" className="hover:text-gray-500">GitHub</a>
-            <a href="#" className="hover:text-gray-500">Instagram</a>
+        {/* Footer Bottom Section */}
+        <div className="mt-12 border-t border-gray-700 pt-6 flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
+          <p className="text-sm">© 2025 Top5Shots. All rights reserved.</p>
+          <div className="flex flex-wrap justify-center md:justify-end gap-5 mt-4 md:mt-0">
+            <a href="#" className="flex items-center gap-2 hover:text-gray-400">
+              <FaFacebook size={24} /> <span>Facebook</span>
+            </a>
+            <a href="#" className="flex items-center gap-2 hover:text-gray-400">
+              <FaTwitter size={24} /> <span>Twitter</span>
+            </a>
+            <a href="#" className="flex items-center gap-2 hover:text-gray-400">
+              <FaGithub size={24} /> <span>GitHub</span>
+            </a>
+            <a href="#" className="flex items-center gap-2 hover:text-gray-400">
+              <FaInstagram size={24} /> <span>Instagram</span>
+            </a>
           </div>
         </div>
       </div>
