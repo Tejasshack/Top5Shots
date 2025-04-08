@@ -4,36 +4,61 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
-
 const ReviewCard = ({ avatar, name, rating, review }) => (
-  <div className="w-80 p-5 bg-white rounded-lg shadow-md border">
-    <div className="flex items-center gap-3 mb-3">
-      <img src={avatar} alt={name} className="w-10 h-10 rounded-full" />
+  <div className="p-6 bg-white rounded-2xl shadow-md border border-gray-200 hover:shadow-xl transition duration-300 ease-in-out mx-2">
+    <div className="flex items-center gap-4 mb-4">
+      <img src={avatar} alt={name} className="w-12 h-12 rounded-full border-2 border-blue-500" />
       <div>
-        <h3 className="font-medium text-gray-900">{name}</h3>
+        <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
+        <div className="text-yellow-400">
+          {"★".repeat(rating)}<span className="text-gray-300">{"★".repeat(5 - rating)}</span>
+        </div>
       </div>
     </div>
-    <p className="text-sm text-gray-600">{review}</p>
+    <p className="text-gray-600 text-sm leading-relaxed">"{review}"</p>
   </div>
 );
 
 export default function MarqueeReviews() {
   const reviews = [
-    { id: 1, name: "Sarah Johnson", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah", rating: 5, review: "This product exceeded my expectations!" },
-    { id: 2, name: "Michael Chen", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=michael", rating: 4, review: "Great value for money. Would recommend." },
-    { id: 3, name: "Emma Davis", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=emma", rating: 5, review: "Absolutely love it! So easy to use." },
-    { id: 4, name: "James Wilson", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=james", rating: 4, review: "Very impressed with the quality!" },
+    {
+      id: 1,
+      name: "Sarah Johnson",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah",
+      rating: 5,
+      review: "This product exceeded my expectations!",
+    },
+    {
+      id: 2,
+      name: "Michael Chen",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=michael",
+      rating: 4,
+      review: "Great value for money. Would recommend.",
+    },
+    {
+      id: 3,
+      name: "Emma Davis",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=emma",
+      rating: 5,
+      review: "Absolutely love it! So easy to use.",
+    },
+    {
+      id: 4,
+      name: "James Wilson",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=james",
+      rating: 4,
+      review: "Very impressed with the quality!",
+    },
   ];
 
   const settings = {
     dots: false,
     infinite: true,
-    speed: 2000,
+    speed: 1500,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3500,
     arrows: false,
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
@@ -42,15 +67,17 @@ export default function MarqueeReviews() {
   };
 
   return (
-    <div className="min-h-6  flex flex-col items-center justify-center bg-gray-300 p-8 m-20">
-      <h2 className="text-2xl font-semibold text-gray-900 mb-6">What Our Customers Say</h2>
-      <div className="w-full max-w-5xl">
+    <section className="bg-gradient-to-r from-gray-100 to-gray-200 py-12 px-6 md:px-16 mb-20">
+      <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
+        What Our Customers Say
+      </h2>
+      <div className="max-w-6xl mx-auto">
         <Slider {...settings}>
-          {reviews.map((r) => (
-            <ReviewCard key={r.id} {...r} />
+          {reviews.map((review) => (
+            <ReviewCard key={review.id} {...review} />
           ))}
         </Slider>
       </div>
-    </div>
+    </section>
   );
 }

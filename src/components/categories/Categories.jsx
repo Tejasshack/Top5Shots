@@ -1,10 +1,10 @@
 const categories = [
-  { title: "Fashion and lifeStyle" },
+  { title: "Fashion and Lifestyle" },
   { title: "Home" },
   { title: "Fitness" },
   { title: "Ecommerce" },
   { title: "Finance" },
-  { title: "Real Eastate" },
+  { title: "Real Estate" },
   { title: "Gaming" },
   { title: "Politics" },
   { title: "Education" },
@@ -13,15 +13,17 @@ const categories = [
 
 export default function CategoryPage() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-5 ">
-      {categories.map((cat, index) => (
-        <div
-          key={index}
-          className="bg-white text-black rounded-lg pt-3.5  px-2  pb-2 h-26 max-h-36 flex flex-col items-center shadow hover:shadow-lg transition"
-        >
-          <div className="text-justify font-semibold">{cat.title}</div>
-        </div>
-      ))}
+    <div className="px-4 py-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4">
+        {categories.map((cat, index) => (
+          <div
+            key={index}
+            className="bg-white text-black rounded-xl p-4 h-28 flex items-center justify-center text-center shadow-md hover:shadow-xl transition duration-300"
+          >
+            <span className="font-semibold text-sm sm:text-base">{cat.title}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

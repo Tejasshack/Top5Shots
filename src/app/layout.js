@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar/Navbar";
 import "./globals.css";
 import Footer from "@/components/footer/Footer";
+import { AuthProvider } from "@/components/context/auth";
 
 export const metadata = {
   title: "Top5Shots - Compare & Advertise",
@@ -11,11 +12,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-white text-white min-h-screen flex flex-col overflow-x-hidden">
+      <AuthProvider>
         <Navbar />
         <main className="flex-grow w-full px-4 sm:px-8 mx-auto max-w-7xl">
           {children}
         </main>
         <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
