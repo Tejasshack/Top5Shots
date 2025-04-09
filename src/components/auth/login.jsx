@@ -77,14 +77,22 @@ export default function Login() {
 
           {/* Email */}
           <div>
+<<<<<<< HEAD
             <label className="block text-gray-700 font-medium">Email</label>
+=======
+            <label className="block text-black font-medium">Email</label>
+>>>>>>> master
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
+<<<<<<< HEAD
               className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+=======
+              className="w-full p-3 border rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+>>>>>>> master
               placeholder="Enter your email"
             />
           </div>

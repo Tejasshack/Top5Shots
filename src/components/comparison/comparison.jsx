@@ -128,7 +128,11 @@ export default function UserComparisonTable() {
                     {brand.status}
                   </span>
                 </td>
+<<<<<<< HEAD
                 <td className="px-4 py-4">
+=======
+                <td className="px-6 py-4">
+>>>>>>> master
                   <div className="flex flex-col gap-1">
                     <a
                       href={brand.url}
@@ -140,7 +144,10 @@ export default function UserComparisonTable() {
                     </a>
 
                     <div className="flex items-center gap-1 text-yellow-500">
+<<<<<<< HEAD
                       <span className="text-white ml-2.5">Our Rating</span>
+=======
+>>>>>>> master
                       {[...Array(brand.rating)].map((_, i) => (
                         <Star key={i} size={14} fill="currentColor" />
                       ))}

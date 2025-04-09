@@ -14,6 +14,10 @@ export default function NewsPage() {
         const res = await axios.get(
           `https://newsdata.io/api/1/news?apikey=pub_79089eb5cd5a7b8bf84ce3252bd121ab65cf9&q=top%205%20news%20in%20every%20category  `
         );
+<<<<<<< HEAD
+=======
+        console.log(res)
+>>>>>>> master
         setArticles(res.data.results || []);
       } catch (err) {
         setError("Failed to fetch news.");
