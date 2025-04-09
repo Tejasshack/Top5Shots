@@ -2,7 +2,7 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
-
+import base_url from "../helper/baseurl";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
@@ -27,7 +27,7 @@ export default function Signup() {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await axios.post(base_url + "/api/auth/register", formData);
+      const response = await axios.post(base_url + "/register", formData);
 
       toast.success("Registered successfully!", { position: "bottom-right" });
       router.push("/login");

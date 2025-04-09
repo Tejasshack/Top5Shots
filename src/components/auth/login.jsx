@@ -34,7 +34,7 @@ export default function Login() {
         password: formData.password,
       };
 
-      const response = await axios.post(base_url + "/api/auth/login", formdata);
+      const response = await axios.post(base_url + "/login", formdata);
 
       if (response.data) {
         toast.success("Logged in successfully!", { position: "bottom-right" });

@@ -1,4 +1,5 @@
 "use client";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -40,19 +41,19 @@ const sideCards = [
 // ----> ARROWS
 const NextArrow = ({ onClick }) => (
   <div
-    className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-60 hover:bg-opacity-80 text-white p-2 rounded-full cursor-pointer"
+    className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-60 hover:bg-opacity-80 text-white p-2 rounded-full cursor-pointer"
     onClick={onClick}
   >
-    <FaChevronRight />
+    <FaChevronRight size={16} />
   </div>
 );
 
 const PrevArrow = ({ onClick }) => (
   <div
-    className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-60 hover:bg-opacity-80 text-white p-2 rounded-full cursor-pointer"
+    className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-60 hover:bg-opacity-80 text-white p-2 rounded-full cursor-pointer"
     onClick={onClick}
   >
-    <FaChevronLeft />
+    <FaChevronLeft size={16} />
   </div>
 );
 
@@ -62,12 +63,12 @@ const CarouselCard = ({ shot }) => (
     <img
       src={shot.image}
       alt={shot.title}
-      className="w-full h-full object-cover transform hover:scale-105 transition duration-300"
+      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
     />
     <div className="absolute inset-0 bg-black bg-opacity-50 p-4 flex flex-col justify-end">
-      <div className="absolute top-3 left-3 bg-red-600 text-white text-xs px-2 py-1 rounded-sm">
+      <span className="absolute top-3 left-3 bg-red-600 text-white text-xs px-2 py-1 rounded-sm">
         {shot.label}
-      </div>
+      </span>
       <h2 className="text-white text-lg font-semibold">{shot.title}</h2>
       <div className="flex items-center gap-2 text-xs text-gray-200 mt-1">
         <span>{shot.date}</span>
@@ -78,10 +79,10 @@ const CarouselCard = ({ shot }) => (
   </div>
 );
 
-// ----> STATIC SIDE CARDS
+// ----> SIDE CARD
 const SideCard = ({ title, imageUrl, cta }) => (
   <div
-    className="flex flex-col justify-end h-72 w-full rounded-2xl overflow-hidden bg-cover bg-center shadow-md hover:shadow-xl transition duration-300"
+    className="flex flex-col justify-end h-72 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 bg-cover bg-center"
     style={{ backgroundImage: `url(${imageUrl})` }}
   >
     <div className="p-6 bg-black/40 backdrop-blur-sm h-full flex flex-col justify-end">
@@ -93,7 +94,7 @@ const SideCard = ({ title, imageUrl, cta }) => (
   </div>
 );
 
-// ----> FINAL SECTION
+// ----> FINAL COMPONENT
 export default function TopShotsAndPopularSection() {
   const settings = {
     dots: false,
@@ -109,37 +110,31 @@ export default function TopShotsAndPopularSection() {
 
   return (
     <section className="w-full px-6 py-16 bg-gradient-to-r from-gray-100 to-white">
-  <div className="max-w-7xl mx-auto">
-    <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
-      🔥 Most Popular & Top Shots
-    </h2>
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
+          🔥 Most Popular & Top Shots
+        </h2>
 
-    {/* 👉 Side-by-side Carousels */}
-    <div className="flex flex-col md:flex-row gap-6 mb-12">
-      <div className="w-full md:w-1/2">
-        <Slider {...settings}>
-          {shotData.map((shot) => (
-            <CarouselCard key={shot.id} shot={shot} />
+        {/* Carousel Section */}
+        <div className="flex flex-col md:flex-row gap-8 mb-12 ml-6">
+          {[...Array(2)].map((_, idx) => (
+            <div key={idx} className="w-136">
+              <Slider {...settings}>
+                {shotData.map((shot) => (
+                  <CarouselCard key={`${idx}-${shot.id}`} shot={shot} />
+                ))}
+              </Slider>
+            </div>
           ))}
-        </Slider>
-      </div>
-      <div className="w-full md:w-1/2">
-        <Slider {...settings}>
-          {shotData.map((shot) => (
-            <CarouselCard key={shot.id} shot={shot} />
+        </div>
+
+        {/* Side Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ml-10">
+          {sideCards.map((card, i) => (
+            <SideCard key={i} {...card} />
           ))}
-        </Slider>
+        </div>
       </div>
-    </div>
-
-    {/* 👇 Side Cards Section */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {sideCards.map((card, i) => (
-        <SideCard key={i} {...card} />
-      ))}
-    </div>
-  </div>
-</section>
-
+    </section>
   );
 }

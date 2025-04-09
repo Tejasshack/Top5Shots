@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 require('dotenv').config(); // Load environment variables
 
 const app = express();
@@ -9,9 +10,13 @@ const MONGO_URI = process.env.MONGO_URI;
 
 const authRoutes = require('./routes/auth');
 
-
+app.use(express.json()); 
 app.use(authRoutes)
-
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true 
+  }));
+  
 // Database Connection
 const databaseConnection = async () => {
     try {
