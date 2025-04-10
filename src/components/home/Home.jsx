@@ -1,23 +1,9 @@
-<<<<<<< HEAD
-import React from "react";
-import CategoryPage from "../categories/Categories";
-import Navbar from "../navbar/Navbar";
-
-const Home = () => {
-  return (
-    <div>
-     
-    </div>
-  );
-};
-
-export default Home;
-=======
 import CategoryPage from "../categories/Categories";
 import Header from "../header/Header";
 import AdsSection from "../adsection/adsection";
 import AutoCarousel from "../carousel/AutoCarousel";
 import MarqueeDemo from "../carousel/MarqueeDemo";
+import Chatbot from "../aichatbot/chatbot";
 function Home() {
     return (
       <div className="flex flex-col min-h-screen bg-gray-100 p-5">
@@ -39,10 +25,10 @@ function Home() {
         <AdsSection />
        
         <MarqueeDemo />
+        <Chatbot/>
       </div>
     );
   }
   
   export default Home;
   
->>>>>>> master

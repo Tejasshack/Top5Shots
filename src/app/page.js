@@ -1,8 +1,4 @@
 import Home from "@/components/home/Home";
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 export const metadata = {
   title: "Top 5 Shots - Latest Trends, Reviews & Insights",
   description:
@@ -113,11 +109,7 @@ export default function Home1() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-<<<<<<< HEAD
-      <Home />
-=======
       <Home/>
->>>>>>> master
     </div>
   );
 }

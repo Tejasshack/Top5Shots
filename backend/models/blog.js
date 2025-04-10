@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
+const user = require("./user");
+const categories = require("./category");
+const tag = require("./tag");
 
 // Define the schema for the Blog model
 const blogSchema = new mongoose.Schema(
@@ -42,6 +45,15 @@ const blogSchema = new mongoose.Schema(
     photo: {
       data: Buffer,
       contentType: String,
+    },
+    image: {
+      url: {
+        type: String,
+        required: true,
+      },
+      public_id: {
+        type: String,
+      },
     },
     // Categories associated with the blog (references 'Category' model)
     categories: [{ type: ObjectId, ref: "Category", required: true }],

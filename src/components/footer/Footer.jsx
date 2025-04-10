@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import Link from "next/link";
 import { FaFacebook, FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
 
@@ -16,10 +16,10 @@ const Footer = () => {
     {
       label: "Company",
       items: [
-        { href: "#", name: "About Us" },
+        { href: "/about-us", name: "About Us" },
         { href: "#", name: "Careers" },
-        { href: "#", name: "Contact" },
-        { href: "#", name: "Privacy Policy" },
+        { href: "/contact-us", name: "Contact" },
+        { href: "/privacy-policy", name: "Privacy Policy" },
       ],
     },
     {
@@ -43,7 +43,8 @@ const Footer = () => {
               Stay Updated with Top5Shots
             </h3>
             <p className="text-gray-400 mt-2 text-sm">
-              Subscribe to our newsletter for the latest trending stories and updates.
+              Subscribe to our newsletter for the latest trending stories and
+              updates.
             </p>
           </div>
           <form
@@ -61,7 +62,6 @@ const Footer = () => {
             </button>
           </form>
         </div>
-        
 
         {/* Navigation Links */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-12">
@@ -71,7 +71,10 @@ const Footer = () => {
               <ul className="space-y-2">
                 {nav.items.map((item, index) => (
                   <li key={index}>
-                    <a href={item.href} className="hover:text-gray-400 transition">
+                    <a
+                      href={item.href}
+                      className="hover:text-gray-400 transition"
+                    >
                       {item.name}
                     </a>
                   </li>

@@ -41,11 +41,9 @@ export default function Navbar() {
           }`}
         >
           {[
-<<<<<<< HEAD
-            { name: "Home", path: "/home" },
-=======
+
             { name: "Home", path: "/" },
->>>>>>> master
+
             { name: "News", path: "/news" },
             { name: "Viral Stories", path: "/viralstories" },
             { name: "Results", path: "/results" },

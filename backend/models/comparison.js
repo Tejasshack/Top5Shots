@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const { ObjectId } = mongoose.Schema;
 // Define the schema for the WebsiteComparison model
 const websiteComparisonSchema = new mongoose.Schema(
   {
@@ -55,6 +55,20 @@ const websiteComparisonSchema = new mongoose.Schema(
         trim: true,
       },
     ],
+    category: {
+      type: ObjectId,
+      ref: "Category",
+      required: true,
+    },
+    image: {
+      url: {
+        type: String,
+        required: true,
+      },
+      public_id: {
+        type: String,
+      },
+    },
   },
   { timestamps: true } // Automatically adds createdAt and updatedAt fields
 );

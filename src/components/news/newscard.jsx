@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import Link from "next/link";
->>>>>>> master
 import React from "react";
 
 export default function NewsCard({ article }) {
@@ -25,23 +22,14 @@ export default function NewsCard({ article }) {
           <span>{article.source_id?.toUpperCase()}</span>
           <span>{new Date(article.pubDate).toLocaleDateString()}</span>
         </div>
-<<<<<<< HEAD
-        <a
-          href={article.link}
-=======
         <Link
           href={"/article"}
->>>>>>> master
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-3 text-blue-600 dark:text-blue-400 text-sm hover:underline"
         >
           Read more →
-<<<<<<< HEAD
-        </a>
-=======
         </Link>
->>>>>>> master
       </div>
     </div>
   );
