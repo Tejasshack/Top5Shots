@@ -16,7 +16,7 @@ const blogSchema = new mongoose.Schema(
       required: true,
     },
     // Unique slug for SEO-friendly URLs with an index for faster searches
-    slug: {
+    slug: {   
       type: String,
       unique: true,
       index: true,

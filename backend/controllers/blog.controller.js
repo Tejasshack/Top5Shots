@@ -5,7 +5,7 @@ const slugify = require("slugify");
 // Create a new blog
 exports.createBlog = async (req, res) => {
   try {
-    const { title, body, categories, tags, postedBy } = req.body;
+    const { title} = req.body;
 
     const blog = new Blog({
       ...req.body,
@@ -39,8 +39,8 @@ exports.getAllBlogs = async (req, res) => {
 // Get single blog by slug
 exports.getBlogBySlug = async (req, res) => {
   try {
-    res.json("<h1>Get Blogs By Slug</h1>");
-    res.json(blog);
+    const getBlog=await Blog.findById(req.params.slug, req.body);
+    res.json(getBlog,"Success")
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -49,8 +49,9 @@ exports.getBlogBySlug = async (req, res) => {
 // Update a blog by slug
 exports.updateBlog = async (req, res) => {
   try {
+    const updateBlog=await Blog.findByIdAndUpdate(req.params.slug, req.body, { new: true });
     res.json("Update Blog");
-    res.json(blog);
+
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -58,7 +59,9 @@ exports.updateBlog = async (req, res) => {
 
 exports.deleteBlog = async (req, res) => {
   try {
-    res.json("<h1>Delete Blog</h1>");
+   const blog = await Blog.findByIdAndDelete({ _id: req.params.id });
+       if (!blog) return res.status(404).json({ error: "Tag not found" });
+   
 
     res.json({ message: "Blog deleted successfully" });
   } catch (error) {

@@ -17,6 +17,6 @@ router.get("/blogs/:slug", getBlogBySlug);
 
 router.put("/blogs/:slug", updateBlog);
 
-router.delete("/blogs/:slug", deleteBlog);
+router.delete("/blogs/:id", deleteBlog);
 
 module.exports = router;

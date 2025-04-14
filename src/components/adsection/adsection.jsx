@@ -9,7 +9,7 @@ const shotData = [
   {
     id: 1,
     title: "America Puts Reciprocal Tariffs",
-    image: "/breaking-news.jpg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVvOlhJpA7cIdQHShXA9t4GXFs3MlgOEf3jw&s",
     date: "March 11, 2024",
     author: "NewsExpress",
     label: "TopShots",
@@ -17,7 +17,7 @@ const shotData = [
   {
     id: 2,
     title: "5 Best Laptops for Students in 2024",
-    image: "/laptop-top-pick.jpg",
+    image: "/images/Laptop.jpg",
     date: "April 5, 2024",
     author: "Top5Shots",
     label: "Top Pick",
@@ -27,7 +27,8 @@ const shotData = [
 const sideCards = [
   {
     title: "Most Searched Shots",
-    imageUrl: "https://images.unsplash.com/photo-1602526432604-ea47b9b54a0a",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVvOlhJpA7cIdQHShXA9t4GXFs3MlgOEf3jw&s",
+    
     cta: "Check Searches",
   },
   {
@@ -64,14 +65,14 @@ const CarouselCard = ({ shot }) => (
       alt={shot.title}
       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
     />
-    <div className="absolute inset-0 bg-black bg-opacity-50 p-4 flex flex-col justify-end">
+    <div className="absolute inset-0  bg-opacity-50 p-4 flex flex-col justify-end">
       <span className="absolute top-3 left-3 bg-red-600 text-white text-xs px-2 py-1 rounded-sm">
         {shot.label}
       </span>
       <h2 className="text-white text-lg font-semibold">{shot.title}</h2>
       <div className="flex items-center gap-2 text-xs text-gray-200 mt-1">
         <span>{shot.date}</span>
-        <span className="text-white">•</span>
+        <span className="text-black">•</span>
         <span>{shot.author}</span>
       </div>
     </div>
