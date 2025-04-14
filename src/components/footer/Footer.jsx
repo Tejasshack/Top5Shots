@@ -26,7 +26,7 @@ const Footer = () => {
       label: "Resources",
       items: [
         { href: "#", name: "Terms of Service" },
-        { href: "#", name: "FAQs" },
+        { href: "/faq", name: "FAQs" },
         { href: "#", name: "Support" },
         { href: "#", name: "Advertising" },
       ],
