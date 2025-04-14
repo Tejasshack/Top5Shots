@@ -25,7 +25,6 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       setLoading(true);
 
@@ -33,24 +32,20 @@ export default function Login() {
         email: formData.email,
         password: formData.password,
       };
-      console.log(formdata)
 
       const response = await axios.post(base_url + "/login", formdata);
 
       if (response.data) {
         toast.success("Logged in successfully!", { position: "bottom-right" });
-        setFormData({
-          email: "",
-          password: "",
-        });
+        setFormData({ email: "", password: "" });
 
         setAuth({
           ...auth,
           user: response.data.user,
           token: response.data.token,
         });
-        localStorage.setItem("auth", JSON.stringify(response.data));
 
+        localStorage.setItem("auth", JSON.stringify(response.data));
         setError(false);
         router.push("/");
       }
@@ -58,8 +53,6 @@ export default function Login() {
       toast.error(error.response?.data?.message || "Login failed!", {
         position: "bottom-right",
       });
-
-      console.log(error.response?.data?.message);
       setError(true);
     } finally {
       setLoading(false);
@@ -67,25 +60,35 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex  justify-center bg-gray-100 px-4 pt-[20px]">
-      <div className="bg-white h-[400px] shadow-lg rounded-lg p-6 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          <Link href={"/login"}>Login/</Link>
-          <Link href={"/signup"}>Signup</Link>
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name */}
+    <div className="min-h-screen flex justify-center items-center">
+      {/* Main Box with Image and Form */}
 
+      {/* Left Side (Image) */}
+      <div className="w-1/2 hidden md:block">
+        <img
+          src="https://img.freepik.com/free-vector/forgot-password-concept-illustration_114360-1095.jpg?ga=GA1.1.170324605.1744353854&semt=ais_hybrid&w=740"
+          alt="Login Visual"
+          className="object-cover w-full h-full"
+        />
+      </div>
+
+      {/* Right Side (Form) */}
+      <div className="w-full md:w-1/2 p-8">
+        <h2 className="text-2xl font-bold text-center  text-gray-800 mb-6">
+        Welcome to top5Shots !
+        </h2>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email */}
           <div>
-            <label className="block text-black font-medium">Email</label>
+            <label className="block text-gray-700 font-medium">Email</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full p-3 border rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 text-black border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your email"
             />
           </div>
@@ -104,29 +107,30 @@ export default function Login() {
             />
           </div>
 
-          {/* Submit Button */}
+          {/* Submit */}
           <button
             type="submit"
+            disabled={loading}
             className="cursor-pointer w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition"
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
 
+          {/* Error */}
           {err && (
-            <>
-              <div>
-                <h1 className=" text-center text-red-500 text-2xl">
-                  Error In Login
-                </h1>
-              </div>
-            </>
+            <div>
+              <h1 className="text-center text-red-500 text-2xl">
+                Error In Login
+              </h1>
+            </div>
           )}
         </form>
 
-        <h1 className="text-blue-400 pt-2">
-          <Link href={"/signup"}>
-            If not account please{" "}
-            <span className=" text-orange-300">SignUp Now..</span>
+        {/* Signup Link */}
+        <h1 className="text-blue-400 pt-4 text-center">
+          <Link href="/signup">
+            Don't have account, please{" "}
+            <span className="text-orange-400 font-semibold">Sign Up Now</span>
           </Link>
         </h1>
       </div>

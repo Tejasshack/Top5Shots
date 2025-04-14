@@ -29,15 +29,20 @@ export default function CategoryPage() {
 
   return (
     <div className="px-4 py-6">
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4">
-        {categories.map((cat) => (
+      <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">Explore Categories</h2>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
+        {categories.map((cat, index) => (
           <div
-            key={cat._id}
-            onClick={() => handleCategoryClick(cat.slug)} // ✅ Use slug!
-            className="cursor-pointer bg-white text-black rounded-xl p-4 h-28 flex items-center justify-center text-center shadow-md hover:shadow-xl transition duration-300"
+            key={index}
+            className="bg-white text-black rounded-xl p-4 h-32 sm:h-36 flex flex-col items-center justify-center gap-3 text-center hover:bg-[#785492] hover:text-white shadow-sm hover:shadow-xl transition duration-300 ease-in-out"
           >
+            <img
+              src={cat.img}
+              alt={cat.title}
+              className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
+            />
             <span className="font-semibold text-sm sm:text-base">
-              {cat.name}
+              {cat.title}
             </span>
           </div>
         ))}
