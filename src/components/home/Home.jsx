@@ -2,8 +2,9 @@ import CategoryPage from "../categories/Categories";
 import Header from "../header/Header";
 import AdsSection from "../adsection/adsection";
 import AutoCarousel from "../carousel/AutoCarousel";
-import MarqueeDemo from "../carousel/MarqueeDemo";
+
 import Chatbot from "../aichatbot/chatbot";
+import Crousel from "../carousel/Carousel2";
 
 function Home() {
   return (
@@ -22,8 +23,9 @@ function Home() {
       <AutoCarousel />
       <AdsSection />
 
-      <MarqueeDemo />
       <Chatbot />
+      <Crousel />
+      
     </div>
   );
 }

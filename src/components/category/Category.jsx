@@ -1,59 +1,59 @@
-import AutoCarousel from "../carousel/AutoCarousel";
+"use client";
 
-export default function Category() {
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+
+export default function CategoryPage() {
+  const [categories, setCategories] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/category");
+        console.log("Fetched categories:", res.data); // ✅ Check the response
+        setCategories(res.data);
+      } catch (error) {
+        console.error("Failed to fetch categories:", error.message);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  const handleCategoryClick = (cat) => {
+    const categoryName = cat.name?.toLowerCase().replace(/\s+/g, "-"); // Format category name
+    const categorySlug = cat.slug; // Use the slug directly from the fetched category
+    
+    if (categoryName && categorySlug) {
+      router.push(`/category/${categoryName}/${categorySlug}`); // Construct the correct URL
+    }
+  };
+
   return (
-    <div className="w-full px-4 sm:px-6 lg:px-10">
-      <h1 className="text-center text-black font-bold text-2xl sm:text-3xl mb-6">
-        Finance
-      </h1>
+    <div className="px-4 py-10 max-w-7xl mx-auto">
+      <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
+        Explore Categories
+      </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        {[...Array(4)].map((_, index) => (
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        {categories.map((cat, index) => (
           <div
             key={index}
-            className="w-full h-[30vh] [perspective:1000px] mx-auto"
+            onClick={() => handleCategoryClick(cat)}
+            className="cursor-pointer bg-white text-gray-900 rounded-2xl p-6 h-40 flex flex-col items-center justify-center gap-3 text-center border border-gray-200 hover:bg-purple-600 hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out"
           >
-            <div
-              className="
-                relative w-full h-full transition-transform duration-500 
-                [transform-style:preserve-3d]
-                rotate-y-180 sm:rotate-y-0 
-                sm:hover:[transform:rotateY(180deg)]
-              "
-            >
-              <div
-                className="
-                  absolute w-full h-full backface-hidden bg-cover bg-center 
-                  rounded-lg shadow-md flex items-center justify-center 
-                  text-white text-xl font-bold hidden sm:flex
-                "
-                style={{ backgroundImage: "url('/images/fin.jpg')" }}
-              >
-                Banking
-              </div>
-
-              <div className="absolute w-full h-full backface-hidden [transform:rotateY(180deg)] shadow-md bg-white text-black rounded-lg  p-4 text-center flex flex-col justify-center items-center">
-                <h2 className="text-xl font-bold py-2">Banking</h2>
-                <p>25 Personal loans</p>
-                <p>15 Credit cards</p>
-                <p>10 Saving tips</p>
-              </div>
-            </div>
+            <img
+              src={cat.img}
+              alt={cat.title || cat.name || "Category"}
+              className="w-14 h-14 object-contain"
+            />
+            <span className="font-semibold text-sm sm:text-base">
+              {cat.title || cat.name || "Unnamed"}
+            </span>
           </div>
         ))}
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-        <div className="shadow-md bg-white text-black rounded-lg border-[4px] p-4 h-[40vh] sm:h-[50vh] text-center flex flex-col justify-center">
-          <h2 className="text-xl font-bold py-2">Top Five Shots</h2>
-        </div>
-        <div className="shadow-md bg-white text-black rounded-lg border-[4px] p-4 h-[40vh] sm:h-[50vh] text-center flex flex-col justify-center">
-          <h2 className="text-xl font-bold py-2">Most Popular Shots</h2>
-        </div>
-      </div>
-
-      {/* Auto Carousel Section */}
-      <AutoCarousel />
     </div>
   );
 }

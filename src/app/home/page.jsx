@@ -2,7 +2,8 @@ import Header from "@/components/header/Header";
 import CategoryPage from "@/components/categories/Categories";
 import AutoPlay from "@/components/carousel/Carousel";
 import AdsSection from "@/components/adsection/adsection";
-import MarqueeDemo from "@/components/carousel/Carousel2";
+
+import Crousel from "@/components/carousel/Carousel2";
 
 function Page() {
   return (
@@ -23,8 +24,8 @@ function Page() {
       {/* Other components below the header/categories section */}
       <AutoPlay />
       <AdsSection />
-     
-      <MarqueeDemo />
+
+      <Crousel />
     </div>
   );
 }

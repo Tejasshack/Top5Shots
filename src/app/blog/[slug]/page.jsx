@@ -1,7 +1,52 @@
 import AutoCrousel from "../../../components/article/AutoCrousel";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
+// ⛳️ Dynamic metadata
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+
+  try {
+    const res = await fetch(`http://localhost:5000/blogs/${slug}`, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) return { title: "Blog Not Found | Top5Shots" };
+
+    const blog = await res.json();
+
+    return {
+      title: `${blog.title} | Top5Shots`,
+      description: blog.metaDescription || blog.body?.slice(0, 160),
+      openGraph: {
+        title: blog.title,
+        description: blog.metaDescription || blog.body?.slice(0, 160),
+        url: `https://top5shots.com/blogs/${slug}`,
+        type: "article",
+        images: [
+          {
+            url: blog.image?.url || "/images/default-banner.png",
+            width: 1200,
+            height: 630,
+            alt: blog.title,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: blog.title,
+        description: blog.metaDescription || blog.body?.slice(0, 160),
+        images: [blog.image?.url || "/images/default-banner.png"],
+      },
+    };
+  } catch {
+    return {
+      title: "Error Loading Blog | Top5Shots",
+    };
+  }
+}
+
+// 📰 Page content
 export default async function Article({ params }) {
   const { slug } = params;
   let blog = null;

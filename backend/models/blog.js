@@ -16,7 +16,7 @@ const blogSchema = new mongoose.Schema(
       required: true,
     },
     // Unique slug for SEO-friendly URLs with an index for faster searches
-    slug: {   
+    slug: {
       type: String,
       unique: true,
       index: true,
@@ -42,21 +42,13 @@ const blogSchema = new mongoose.Schema(
       type: String,
     },
     // Blog cover image stored as binary data with its content type
-    photo: {
-      data: Buffer,
-      contentType: String,
-    },
+    
     image: {
-      url: {
-        type: String,
-        required: true,
-      },
-      public_id: {
-        type: String,
-      },
+     type:String,
     },
     // Categories associated with the blog (references 'Category' model)
     categories: [{ type: ObjectId, ref: "Category", required: true }],
+    subcategories: [{ type: ObjectId, ref: "Subcategory", required: true }],
     // Tags associated with the blog (references 'Tag' model)
     tags: [{ type: ObjectId, ref: "Tag", required: true }],
     // Number of times the blog has been marked as favorite, defaults to 0

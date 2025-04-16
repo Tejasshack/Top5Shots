@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ChevronDown, Search, Star } from "lucide-react";
+import Link from "next/link"; // Import Link component from Next.js
 
 export default function UserComparisonTable() {
   const [comparisons, setComparisons] = useState([]);
@@ -63,9 +64,13 @@ export default function UserComparisonTable() {
                       className="w-12 h-12 object-contain rounded-md"
                     />
                   )}
-                  <span className="text-sm font-medium">
+                  {/* Wrap the website name with Link */}
+                  <Link
+                    href={`/category/${card.category?.slug}/${card.websiteName}`}
+                    className="text-sm font-medium text-blue-600 hover:text-blue-800"
+                  >
                     {card.websiteName}
-                  </span>
+                  </Link>
                 </div>
               </td>
 

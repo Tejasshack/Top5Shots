@@ -22,6 +22,6 @@ router.get("/blogs/category/:categoryId",  getblogbyCategory);
 
 router.put("/blogs/:slug", updateBlog);
 
-router.delete("/blogs/:id", deleteBlog);
+router.delete("/blogs/:slug", deleteBlog);
 
 module.exports = router;

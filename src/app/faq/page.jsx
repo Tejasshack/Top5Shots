@@ -2,28 +2,33 @@
 export default () => {
   const faqsList = [
     {
-      q: "What are some random questions to ask?",
-      a: "That's exactly the reason we created this random question generator. There are hundreds of random questions to choose from so you're able to find the perfect random question.",
+      q: "What is Top5Shots?",
+      a: "Top5Shots is a platform where users can participate in exciting contests, showcase their skills, and win amazing prizes. Join now and be a part of our growing community!",
       href: "javascript:void(0)",
     },
     {
-      q: "Do you include common questions?",
-      a: "This generator doesn't include most common questions. The thought is that you can come up with common questions on your own so most of the questions in this generator.",
+      q: "How do I participate in a contest?",
+      a: "Simply visit the contests page, select the contest you're interested in, and follow the instructions provided. Most contests require uploading your work or submitting a response.",
       href: "javascript:void(0)",
     },
     {
-      q: "Can I use this for 21 questions?",
-      a: "Yes! there are two ways that you can use this question generator depending on what you're after. You can indicate that you want 21 questions generated.",
+      q: "Is there a fee to join contests?",
+      a: "No, participating in contests on Top5Shots is free! We believe in creating a space for everyone to participate without barriers.",
       href: "javascript:void(0)",
     },
     {
-      q: "Are these questions for girls or for boys?",
-      a: "The questions in this generator are gender neutral and can be used to ask either male of females (or any other gender the person identifies with).",
+      q: "Can I create my own contest?",
+      a: "Yes! Top5Shots allows users to create and host their own contests. Simply sign up, and you'll have access to create a contest page with all the necessary tools and settings.",
       href: "javascript:void(0)",
     },
     {
-      q: "What do you wish you had more talent doing?",
-      a: "If you've been searching for a way to get random questions, you've landed on the correct webpage. We created the Random Question Generator to ask you as many random questions as your heart desires.",
+      q: "What kind of prizes are offered in contests?",
+      a: "Prizes vary from contest to contest. You can win cash prizes, gift cards, exclusive merchandise, and more! Be sure to check the contest page for details on the prizes available.",
+      href: "javascript:void(0)",
+    },
+    {
+      q: "How do I track my contest submissions?",
+      a: "You can track your contest submissions and see the status on your profile page. You'll also be notified if there are any updates or results related to your entry.",
       href: "javascript:void(0)",
     },
   ];
@@ -36,8 +41,8 @@ export default () => {
             How can we help?
           </h3>
           <p className="text-gray-600">
-            Everything you need to know about the product. Can’t find the answer
-            you’re looking for? feel free to{" "}
+            Everything you need to know about Top5Shots. Can’t find the answer
+            you’re looking for? Feel free to{" "}
             <a
               className="text-indigo-600 font-semibold whitespace-nowrap"
               href="javascript:void(0)"

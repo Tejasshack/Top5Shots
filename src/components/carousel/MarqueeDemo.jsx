@@ -19,7 +19,7 @@ const ReviewCard = ({ avatar, name, rating, review }) => (
   </div>
 );
 
-export default function MarqueeDemo() {
+export default function Crousel() {
   const reviews = [
     {
       id: 1,

@@ -1,51 +1,54 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // ✅
+import { useRouter } from "next/navigation";
 import axios from "axios";
 
 export default function CategoryPage() {
   const [categories, setCategories] = useState([]);
-  const router = useRouter(); // ✅
+  const router = useRouter();
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/category"); // ✅ Make sure this matches your backend route
+        const res = await axios.get("http://localhost:5000/category");
+        console.log("Fetched categories:", res.data); // ✅ Check the response
         setCategories(res.data);
       } catch (error) {
         console.error("Failed to fetch categories:", error.message);
       }
     };
-
     fetchCategories();
   }, []);
 
-  const handleCategoryClick = (categorySlug) => {
-    router.push(`/category/${categorySlug}`);
+  const handleCategoryClick = (cat) => {
+    const categorySlug = cat.slug?.toLowerCase(); // Ensure lowercase if needed
+    if (categorySlug) {
+      router.push(`/${categorySlug}`);
+    }
   };
 
-  // Inside your map:
-
   return (
-    <div className="px-4 py-6">
-      <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">Explore Categories</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
-        {categories.map((cat, index) => (
-          <div
-            key={index}
-            className="bg-white text-black rounded-xl p-4 h-32 sm:h-36 flex flex-col items-center justify-center gap-3 text-center hover:bg-[#785492] hover:text-white shadow-sm hover:shadow-xl transition duration-300 ease-in-out"
-          >
-            <img
-              src={cat.img}
-              alt={cat.title}
-              className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
-            />
-            <span className="font-semibold text-sm sm:text-base">
-              {cat.title}
-            </span>
-          </div>
-        ))}
+    <div className="px-4 py-10 max-w-8xl mx-auto">
+      <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
+        Explore Categories
+      </h2>
+
+      {/* Grid Layout */}
+      <div className="px-4 py-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4">
+          {categories.map((cat, index) => (
+            <div
+              key={index}
+              onClick={() => handleCategoryClick(cat)}
+              className="bg-white text-black rounded-xl p-4 h-28 flex items-center justify-center text-center shadow-md hover:shadow-xl transition duration-300"
+            >
+              <span className="font-semibold text-sm sm:text-base">
+                {cat.title || cat.name || "Unnamed"}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -26,6 +26,7 @@ exports.getAllBlogs = async (req, res) => {
     const blogs = await Blog.find({})
       .populate("categories", "name slug")
       .populate("tags", "name slug")
+      .populate("subcategories", "name")
       .populate("postedBy", "username email") // Only get username and email
       .sort({ createdAt: -1 });
 
@@ -55,6 +56,7 @@ exports.getBlogBySlug = async (req, res) => {
     const blog = await Blog.findOne({ slug: req.params.slug })
       .populate("categories", "name slug")
       .populate("tags", "name slug")
+      .populate("subcategories", "name")
       .populate("postedBy", "username email");
 
     if (!blog) return res.status(404).json({ error: "Blog not found" });
@@ -69,13 +71,23 @@ exports.getBlogBySlug = async (req, res) => {
 // Update a blog by slug
 exports.updateBlog = async (req, res) => {
   try {
-    const updateBlog=await Blog.findByIdAndUpdate(req.params.slug, req.body, { new: true });
-    res.json("Update Blog");
+    const updateBlog = await Blog.findOneAndUpdate(
+      { slug: req.params.slug }, // filter
+      req.body,                  // update
+      { new: true, runValidators: true } // options
+    );
 
+    if (!updateBlog) {
+      return res.status(404).json({ error: "Blog not found" });
+    }
+
+    res.json(updateBlog); // return updated blog
   } catch (error) {
+    console.error(error);
     res.status(400).json({ error: error.message });
   }
 };
+
 
 exports.deleteBlog = async (req, res) => {
   try {

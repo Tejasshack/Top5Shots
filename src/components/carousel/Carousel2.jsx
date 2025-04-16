@@ -21,7 +21,7 @@ const NewsCard = ({ title, source, date, image }) => (
   </div>
 );
 
-export default function MarqueeNews() {
+export default function Crousel() {
   const news = [
     {
       id: 1,

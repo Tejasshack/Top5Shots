@@ -7,17 +7,16 @@ const Footer = () => {
     {
       label: "Quick Links",
       items: [
-        { href: "#", name: "Home" },
-        { href: "#", name: "News" },
-        { href: "#", name: "Viral Stories" },
-        { href: "#", name: "Match Score" },
+        { href: "/home", name: "Home" },
+        { href: "/news", name: "News" },
+        { href: "/viralstories", name: "Viral Stories" },
+        { href: "/matchscore", name: "Match Score" },
       ],
     },
     {
       label: "Company",
       items: [
         { href: "/about-us", name: "About Us" },
-        { href: "#", name: "Careers" },
         { href: "/contact-us", name: "Contact" },
         { href: "/privacy-policy", name: "Privacy Policy" },
       ],
@@ -25,10 +24,10 @@ const Footer = () => {
     {
       label: "Resources",
       items: [
-        { href: "#", name: "Terms of Service" },
+        { href: "/terms", name: "Terms of Service" },
         { href: "/faq", name: "FAQs" },
-        { href: "#", name: "Support" },
-        { href: "#", name: "Advertising" },
+        { href: "/support", name: "Support" },
+        { href: "/advertising", name: "Advertising" },
       ],
     },
   ];
@@ -94,9 +93,9 @@ const Footer = () => {
             <a href="#" className="flex items-center gap-2 hover:text-gray-400">
               <FaTwitter size={24} /> <span>Twitter</span>
             </a>
-            <a href="#" className="flex items-center gap-2 hover:text-gray-400">
+            {/* <a href="#" className="flex items-center gap-2 hover:text-gray-400">
               <FaGithub size={24} /> <span>GitHub</span>
-            </a>
+            </a> */}
             <a href="#" className="flex items-center gap-2 hover:text-gray-400">
               <FaInstagram size={24} /> <span>Instagram</span>
             </a>
